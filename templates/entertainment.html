@@ -1,0 +1,179 @@
+<!-- ENTERTAINMENT TYPE -->
+
+{% extends "base/layout.html" %}
+
+{% block body %}
+
+    {% if title == 'Movies' %}
+    
+    <!-- BG Image -->
+    <div class="bgimg movies"></div>
+
+    <!-- Content -->
+    <div class="grid grid-cols-3 px-3 mt-8">
+    {% for movie in movies %}
+        {% set fname= movie.movie_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{movie.movie_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                {% if movie.movie_description %}
+                    <p class="px-1 py-[1.8px]">{{movie.movie_description[0:160]}}...</p>
+                {% endif %}
+            </div>
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="watch/movie/{{movie.movie_slug}}">{{movie.movie_name}} ({{movie.movie_year}})</a></h1>
+        </div>
+    {% endfor %}
+    </div>
+     
+    <div class="flex justify-center py-3">
+
+        {% if prev=='javascript:void(0)' %}
+
+            <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5 cursor-default">&#8592; Previous</a></h1>
+            <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5" href="{{next}}">Next &#8594;</a></h1>
+
+        {% elif next=='javascript:void(0)' %}
+
+            <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5" href="{{prev}}">&#8592; Previous</a></h1>
+            <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5 cursor-default">Next &#8594;</a></h1>
+
+        {% else %}
+        
+            <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5" href="{{prev}}">&#8592; Previous</a></h1>
+            <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5" href="{{next}}">Next &#8594;</a></h1>
+        
+        {% endif %}
+    </div>
+    
+    <script>
+        // Active Link
+        document.getElementById('movies').classList.remove('text-yellow-600')
+        document.getElementById('movies').classList.remove('hover:text-yellow-500')
+        document.getElementById('movies').classList.remove('hover:border-b-2')
+        document.getElementById('movies').classList.remove('hover:border-b-sky-300')
+        document.getElementById('movies').classList.remove('loginnedlinks')
+        document.getElementById('movies').classList.add('text-yellow-500')
+        document.getElementById('movies').classList.add('border-b-2')
+        document.getElementById('movies').classList.add('border-b-sky-300')
+        document.getElementById('movies').classList.add('cursor-default')
+        document.getElementById('movies').addEventListener('click',(event)=>{
+            event.preventDefault()
+        })
+    </script>
+
+    {% elif title == 'Animes' %}
+
+    <!-- BG Image -->
+    <div class="bgimg animes"></div>
+
+    <!-- Content -->
+    <div class="grid grid-cols-3 px-3 mt-8">
+        {% for anime in animes %}
+            {% set fname= anime.anime_thumbnail %}
+            <div class="px-3 my-4 ent">
+                <img src="{{url_for('static',filename=fname)}}" alt="{{anime.anime_name}}">
+                <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                    {% if anime.anime_description %}
+                        <p class="px-1 py-[1.8px]">{{anime.anime_description[0:175]}}...</p>
+                    {% endif %}
+                </div>
+                <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="episodes/anime/{{anime.anime_slug}}">{{anime.anime_name}} ({{anime.anime_year}})</a></h1>
+            </div>
+        {% endfor %}
+    </div>
+         
+    <div class="flex justify-center py-3">
+    
+            {% if prev=='javascript:void(0)' %}
+    
+                <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5 cursor-default">&#8592; Previous</a></h1>
+                <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5" href="{{next}}">Next &#8594;</a></h1>
+    
+            {% elif next=='javascript:void(0)' %}
+    
+                <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5" href="{{prev}}">&#8592; Previous</a></h1>
+                <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5 cursor-default">Next &#8594;</a></h1>
+    
+            {% else %}
+            
+                <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5" href="{{prev}}">&#8592; Previous</a></h1>
+                <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5" href="{{next}}">Next &#8594;</a></h1>
+            
+            {% endif %}
+    </div>
+
+    <script>
+        // Active Link
+        document.getElementById('animes').classList.remove('text-yellow-600')
+        document.getElementById('animes').classList.remove('hover:text-yellow-500')
+        document.getElementById('animes').classList.remove('hover:border-b-2')
+        document.getElementById('animes').classList.remove('hover:border-b-sky-300')
+        document.getElementById('animes').classList.remove('loginnedlinks')
+        document.getElementById('animes').classList.add('text-yellow-500')
+        document.getElementById('animes').classList.add('border-b-2')
+        document.getElementById('animes').classList.add('border-b-sky-300')
+        document.getElementById('animes').classList.add('cursor-default')
+        document.getElementById('animes').addEventListener('click',(event)=>{
+            event.preventDefault()
+        })
+    </script>
+
+    {% else %}
+    <!-- BG Image -->
+    <div class="bgimg webseries"></div>
+
+    <!-- Content -->
+    <div class="grid grid-cols-3 px-3 mt-8">
+        {% for webseries in webserie %}
+            {% set fname= webseries.webseries_thumbnail %}
+            <div class="px-3 my-4 ent">
+                <img src="{{url_for('static',filename=fname)}}" alt="{{webseries.webseries_name}}">
+                <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                    {% if webseries.webseries_description %}
+                        <p class="px-1 py-[1.8px]">{{webseries.webseries_description[0:160]}}...</p>
+                    {% endif %}
+                </div>
+                <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="episodes/webseries/{{webseries.webseries_slug}}">{{webseries.webseries_name}} ({{webseries.webseries_year}})</a></h1>
+            </div>
+        {% endfor %}
+    </div>
+         
+    <div class="flex justify-center py-3">
+    
+            {% if prev=='javascript:void(0)' %}
+    
+                <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5 cursor-default">&#8592; Previous</a></h1>
+                <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5" href="{{next}}">Next &#8594;</a></h1>
+    
+            {% elif next=='javascript:void(0)' %}
+    
+                <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5" href="{{prev}}">&#8592; Previous</a></h1>
+                <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5 cursor-default">Next &#8594;</a></h1>
+    
+            {% else %}
+            
+                <h1><a class="bg-yellow-600 text-white px-2 py-1 text-xl rounded-md mx-5" href="{{prev}}">&#8592; Previous</a></h1>
+                <h1><a class="bg-yellow-600 text-white px-7 py-1 text-xl rounded-md mx-5" href="{{next}}">Next &#8594;</a></h1>
+            
+            {% endif %}
+    </div>
+
+    <script>
+        // Active Link
+        document.getElementById('webseries').classList.remove('text-yellow-600')
+        document.getElementById('webseries').classList.remove('hover:text-yellow-500')
+        document.getElementById('webseries').classList.remove('hover:border-b-2')
+        document.getElementById('webseries').classList.remove('hover:border-b-sky-300')
+        document.getElementById('webseries').classList.remove('loginnedlinks')
+        document.getElementById('webseries').classList.add('text-yellow-500')
+        document.getElementById('webseries').classList.add('border-b-2')
+        document.getElementById('webseries').classList.add('border-b-sky-300')
+        document.getElementById('webseries').classList.add('cursor-default')
+        document.getElementById('webseries').addEventListener('click',(event)=>{
+            event.preventDefault()
+        })
+    </script>
+
+    {% endif %}
+
+{% endblock %}

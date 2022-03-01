@@ -1,0 +1,73 @@
+<!-- Episodes -->
+
+{% extends "base/layout.html" %}
+
+{% block body %}
+
+    {% if name=='anime' %}
+
+    {% set fname= anime.anime_thumbnail %}
+    <div class="flex justify-center pt-5 pb-3">
+        <div class="pr-3">
+            <img class="w-[548px] h-[352px] rounded-lg" src="{{url_for('static',filename=fname)}}" alt="{{anime.anime_name}}">
+        </div>
+        <div>
+            <h1 class="text-3xl font-extrabold">{{anime.anime_name}} ({{anime.anime_year}})</h1>
+            <h2 class="text-2xl font-bold text-yellow-600 pt-1">{{anime.anime_genre}}</h2>
+            <h2 class="text-2xl font-bold text-yellow-800 pt-1">Total Episodes : {{anime.anime_episodes}}</h2>
+            <h4 class="w-[600px] text-justify pt-1 text-lg">{{anime.anime_description}}</h4>
+        </div>
+    </div>
+
+    <div class="w-[18%] bg-yellow-800 hover:bg-yellow-900 m-auto rounded-lg py-1 mt-2">
+        <a href="/add-to-watchlist?type=anime_episodes&slug={{anime.anime_slug}}" class="px-[10px] text-2xl flex justify-center items-center text-yellow-100"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg><i class="bi bi-plus"></i>Add to Watchlist</a>
+    </div>
+
+    {% for episode in episodes %}
+    
+    <div class="w-4/6 m-auto border-b-2 border-yellow-500 rounded-lg mt-5 p-2">
+        <span class="text-[23px] font-extrabold underline">Episode {{episode.episode_id}}</span> <span class="text-[23px] font-extrabold"> : </span> <span class="text-[23px] font-extrabold"><a class="text-yellow-900 hover:text-yellow-700 hover:underline" href="/watch/anime/{{episode.episode_slug}}?title={{anime.anime_slug}}&episode={{episode.episode_id}}">{{episode.episode_title}}</a></span>
+        <h1 class="text-justify text-[17px] pt-2">{{episode.episode_description}}</h1>
+    </div>
+    
+    {% endfor %}
+
+    <h2 class="text-4xl block mx-auto text-center text-slate-700 mt-6 border-2 border-slate-200 w-[25%] rounded-xl py-1">Episodes Incoming!</h2>
+
+    {% else %}
+
+    {% set fname= webseries.webseries_thumbnail %}
+    <div class="flex justify-center pt-5 pb-3">
+        <div class="pr-3">
+            <img class="w-[548px] h-[352px] rounded-lg" src="{{url_for('static',filename=fname)}}" alt="{{webseries.webseries_name}}">
+        </div>
+        <div>
+            <h1 class="text-3xl font-extrabold">{{webseries.webseries_name}} ({{webseries.webseries_year}})</h1>
+            <h2 class="text-2xl font-bold text-yellow-600 pt-1">{{webseries.webseries_genre}}</h2>
+            <h2 class="text-2xl font-bold text-yellow-800 pt-1">Total Episodes : {{webseries.webseries_episodes}}</h2>
+            <h4 class="w-[600px] text-justify pt-1 text-lg">{{webseries.webseries_description}}</h4>
+        </div>
+    </div>
+
+    <div class="w-[18%] bg-yellow-800 hover:bg-yellow-900 m-auto rounded-lg py-1 mt-2">
+        <a href="/add-to-watchlist?type=webseries_episodes&slug={{webseries.webseries_slug}}" class="px-[10px] text-2xl flex justify-center items-center text-yellow-100"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg><i class="bi bi-plus"></i>Add to Watchlist</a>
+    </div>
+
+    {% for episode in episodes %}
+    
+    <div class="w-4/6 m-auto border-b-2 border-yellow-500 rounded-lg mt-5 p-2">
+        <span class="text-[23px] font-extrabold underline">Episode {{episode.episode_id}}</span> <span class="text-[23px] font-extrabold"> : </span> <span class="text-[23px] font-extrabold"><a class="text-yellow-900 hover:text-yellow-700 hover:underline" href="/watch/webseries/{{episode.episode_slug}}?title={{webseries.webseries_slug}}&episode={{episode.episode_id}}">{{episode.episode_title}}</a></span>
+        <h1 class="text-justify text-[17px] pt-2">{{episode.episode_description}}</h1>
+    </div>
+
+    {% endfor %}
+
+    <h2 class="text-4xl block mx-auto text-center text-slate-700 mt-6 border-2 border-slate-200 w-[25%] rounded-xl py-1">Episodes Incoming!</h2>
+
+    {% endif %}
+
+{% endblock %}

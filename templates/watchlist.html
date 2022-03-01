@@ -1,0 +1,47 @@
+<!-- Watchlist -->
+
+{% extends "base/layout.html" %}
+
+{% block body %}
+
+<h1 class="text-4xl text-center font-extrabold my-3 underline">My Watchlist</h1>
+
+<div class="grid grid-cols-3 px-3 mt-8">
+    {% for watch in watch_list %}
+        {% set fname= watch.ev_entertainment_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{watch.ev_entertainment_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                <p class="px-1 py-[1.8px]">{{watch.ev_entertainment_description[0:160]}}...</p>
+            </div>
+            {% if watch.ev_entertainment_type=='movie' %}
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="/watch/{{watch.ev_entertainment_type}}/{{watch.ev_entertainment_slug}}">{{watch.ev_entertainment_name}} ({{watch.ev_entertainment_year}})</a></h1>
+            <div class="mt-3 text-center">
+                <a class="text-white bg-yellow-800 hover:bg-yellow-700 text-xl p-1 rounded-lg" href="/delete-from-watchlist?type={{watch.ev_entertainment_type}}&ent={{watch.ev_entertainment_slug}}">Remove from Watchlist</a>
+            </div>
+            {% elif watch.ev_entertainment_type=='anime_episodes' %}
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="/episodes/anime/{{watch.ev_entertainment_slug}}">{{watch.ev_entertainment_name}} ({{watch.ev_entertainment_year}})</a></h1>
+            <div class="mt-3 text-center">
+                <a class="text-white bg-yellow-800 hover:bg-yellow-700 text-xl p-1 rounded-lg" href="/delete-from-watchlist?type={{watch.ev_entertainment_type}}&ent={{watch.ev_entertainment_slug}}">Remove from Watchlist</a>
+            </div>
+            {% elif watch.ev_entertainment_type=='webseries_episodes' %}
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="/episodes/webseries/{{watch.ev_entertainment_slug}}">{{watch.ev_entertainment_name}} ({{watch.ev_entertainment_year}})</a></h1>
+            <div class="mt-3 text-center">
+                <a class="text-white bg-yellow-800 hover:bg-yellow-700 text-xl p-1 rounded-lg" href="/delete-from-watchlist?type={{watch.ev_entertainment_type}}&ent={{watch.ev_entertainment_slug}}">Remove from Watchlist</a>
+            </div>
+            {% elif watch.ev_entertainment_type=='anime' %}
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="/watch/{{watch.ev_entertainment_type}}/{{watch.ev_entertainment_ep_slug}}?title={{watch.ev_entertainment_slug}}&episode={{watch.ev_entertainment_ep_id}}">{{watch.ev_entertainment_name}} ({{watch.ev_entertainment_year}}) <br><span>Episode {{watch.ev_entertainment_ep_id}} :</span> {{watch.ev_entertainment_ep_name}}</a></h1>
+            <div class="mt-3 text-center">
+                <a class="text-white bg-yellow-800 hover:bg-yellow-700 text-xl p-1 rounded-lg" href="/delete-from-watchlist?type={{watch.ev_entertainment_type}}&ent={{watch.ev_entertainment_slug}}&entep={{watch.ev_entertainment_ep_slug}}">Remove from Watchlist</a>
+            </div>
+            {% else %}
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="/watch/{{watch.ev_entertainment_type}}/{{watch.ev_entertainment_ep_slug}}?title={{watch.ev_entertainment_slug}}&episode={{watch.ev_entertainment_ep_id}}">{{watch.ev_entertainment_name}} ({{watch.ev_entertainment_year}}) <br><span>Episode {{watch.ev_entertainment_ep_id}} :</span> {{watch.ev_entertainment_ep_name}}</a></h1>
+            <div class="mt-3 text-center">
+                <a class="text-white bg-yellow-800 hover:bg-yellow-700 text-xl p-1 rounded-lg" href="/delete-from-watchlist?type={{watch.ev_entertainment_type}}&ent={{watch.ev_entertainment_slug}}&entep={{watch.ev_entertainment_ep_slug}}">Remove from Watchlist</a>
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

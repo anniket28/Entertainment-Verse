@@ -1,0 +1,87 @@
+<!-- Seacrh Page -->
+
+{% extends "base/layout.html" %}
+
+{% block body %}
+
+<h2 class="mt-5 text-center text-[33px] underline">Movies Matching your search</h2>
+
+{% if movies %}
+
+<div class="grid grid-cols-3 px-3">
+    {% for movie in movies %}
+        {% set fname= movie.movie_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{movie.movie_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                {% if movie.movie_description %}
+                    <p class="px-1 py-[1.8px]">{{movie.movie_description[0:160]}}...</p>
+                {% endif %}
+            </div>
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="watch/movie/{{movie.movie_slug}}">{{movie.movie_name}} ({{movie.movie_year}})</a></h1>
+        </div>
+    {% endfor %}
+</div>
+
+{% else %}
+
+<h1 class="text-2xl text-slate-700 pt-3 text-center">No movies matching your search query.</h1>
+
+{% endif %}
+
+<div class="border-b-2 border-b-slate-200 mt-3"></div>
+
+<h2 class="mt-5 text-center text-[33px] underline">Animes Matching your search</h2>
+
+{% if animes %}
+
+<div class="grid grid-cols-3 px-3">
+    {% for anime in animes %}
+        {% set fname= anime.anime_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{anime.anime_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                {% if anime.anime_description %}
+                    <p class="px-1 py-[1.8px]">{{anime.anime_description[0:175]}}...</p>
+                {% endif %}
+            </div>
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="episodes/anime/{{anime.anime_slug}}">{{anime.anime_name}} ({{anime.anime_year}})</a></h1>
+        </div>
+    {% endfor %}
+</div>
+
+{% else %}
+
+<h1 class="text-2xl text-slate-700 pt-3 text-center">No animes matching your search query.</h1>
+
+{% endif %}
+
+<div class="border-b-2 border-b-slate-200 mt-3"></div>
+
+<h2 class="mt-5 text-center text-[33px] underline">WebSeries Matching your search</h2>
+
+{% if webserie %}
+
+<div class="grid grid-cols-3 px-3">
+    {% for webseries in webserie %}
+        {% set fname= webseries.webseries_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{webseries.webseries_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                {% if webseries.webseries_description %}
+                    <p class="px-1 py-[1.8px]">{{webseries.webseries_description[0:160]}}...</p>
+                {% endif %}
+            </div>
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="episodes/webseries/{{webseries.webseries_slug}}">{{webseries.webseries_name}} ({{webseries.webseries_year}})</a></h1>
+        </div>
+    {% endfor %}
+</div>
+
+{% else %}
+
+<h1 class="text-2xl text-slate-700 pt-3 text-center">No webseries matching your search query.</h1>
+
+{% endif %}
+
+
+{% endblock %}

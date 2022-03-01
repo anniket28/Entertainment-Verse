@@ -1,0 +1,55 @@
+<!-- LATEST -->
+
+{% extends "base/layout.html" %}
+
+{% block body %}
+
+<h2 class="text-center text-4xl mt-3">Latest Movies</h2>
+<div class="grid grid-cols-3 px-3 justify-center">
+    {% for movie in latest_movies %}
+        {% set fname= movie.movie_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{movie.movie_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                {% if movie.movie_description %}
+                    <p class="px-1 py-[1.8px]">{{movie.movie_description[0:175]}}...</p>
+                {% endif %}
+            </div>
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="watch/movie/{{movie.movie_slug}}">{{movie.movie_name}} ({{movie.movie_year}})</a></h1>
+        </div>
+    {% endfor %}
+</div>
+
+<h2 class="text-center text-4xl">Latest Animes</h2>
+<div class="grid grid-cols-3 px-3">
+    {% for anime in latest_animes %}
+        {% set fname= anime.anime_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{anime.anime_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                {% if anime.anime_description %}
+                    <p class="px-1 py-[1.8px]">{{anime.anime_description[0:175]}}...</p>
+                {% endif %}
+            </div>
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="episodes/anime/{{anime.anime_slug}}">{{anime.anime_name}} ({{anime.anime_year}})</a></h1>
+        </div>
+    {% endfor %}
+</div>
+
+<h2 class="text-center text-4xl mt-8">Latest Web Series</h2>
+<div class="grid grid-cols-3 px-3">
+    {% for webseries in latest_webseries %}
+        {% set fname= webseries.webseries_thumbnail %}
+        <div class="px-3 my-4 ent">
+            <img src="{{url_for('static',filename=fname)}}" alt="{{webseries.webseries_name}}">
+            <div class="onhover text-base text-justify mt-[-76px] relative text-white">
+                {% if webseries.webseries_description %}
+                    <p class="px-1 py-[1.8px]">{{webseries.webseries_description[0:160]}}...</p>
+                {% endif %}
+            </div>
+            <h1 class="block text-center text-2xl "><a class="text-slate-700 hover:text-black hover:underline" href="episodes/webseries/{{webseries.webseries_slug}}">{{webseries.webseries_name}} ({{webseries.webseries_year}})</a></h1>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

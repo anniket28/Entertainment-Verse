@@ -1,0 +1,151 @@
+<!-- HOME -->
+
+{% extends "base/layout.html" %}
+
+{% block body %}
+
+<style>
+    footer{
+        margin-top: 0px !important;
+    }
+</style>
+
+<!-- Home Page Block 1 -->
+<div class="flex justify-center p-[60px] bg-slate-700">
+    <div><img class="rounded-2xl" src="{{url_for('static',filename='images/img1.jpeg')}}" alt="Entertainment"></div>
+    <div class="text-3xl pl-0 w-6/12 text-center m-auto mx-0 text-yellow-400">Enjoy Movies, Animes and Web Series here at Entertainment Verse</div>
+</div>
+
+<div class="border-b-[3px] border-yellow-700"></div>
+
+<!-- Home Page Block 2 -->
+<div class="flex justify-center p-[60px] bg-slate-700">
+    <div class="text-3xl pl-0 w-6/12 text-center m-auto mx-3 text-yellow-400">Download, Watch and Enjoy your Movies, Animes and Web Series anytime and anywhere you like</div>
+    <div><img class="rounded-2xl" src="{{url_for('static',filename='images/img2.jpeg')}}" alt="Download"></div>
+</div>
+
+<div class="border-b-[3px] border-yellow-700"></div>
+
+<!-- Home Page Block 3 -->
+<div class="flex justify-center p-[60px] bg-slate-700">
+    <div><img class="rounded-2xl" src="{{url_for('static',filename='images/img3.png')}}" alt="Watchlist"></div>
+    <div class="text-3xl pl-0 w-6/12 text-center m-auto text-yellow-400">Save to Watchlist the Movies, Animes and Web Series that you wish to watch later</div>
+</div>
+
+<div class="border-b-[3px] border-yellow-700"></div>
+
+<!-- Home Page Block 4 -->
+<div class="p-[60px] bg-slate-700">
+    <div class="text-5xl text-center text-yellow-400">All About Entertainment Verse</div>
+
+    <div class="bg-yellow-700 text-white w-8/12 m-auto text-2xl p-2 px-5 flex justify-between mt-6">What is Entertainment Verse ?<button id="plus1" onclick="openWhat()" class="text-3xl">+</button> <button onclick="closeWhat()" id="cross1" class="text-3xl cross">&times;</button></div>
+
+    <div class="w-8/12 m-auto">
+        <div class="border-b-2 border-yellow-500"></div>
+        <div class="bg-yellow-700 text-white text-2xl p-2 py-4 px-5 about h-40" id="what">Entertainment Verse or simply EV is a place where you can watch various Movies, Animes and Web Series. Here in this verse, you can watch all types of Entertainment things you want.</div>
+    </div>
+
+    <div class="bg-yellow-700 text-white w-8/12 m-auto text-2xl p-2 px-5 flex justify-between mt-3">Why Entertainment Verse ?<button id="plus2" onclick="openWhy()" class="text-3xl">+</button> <button onclick="closeWhy()" id="cross2" class="text-3xl cross">&times;</button></div>
+
+    <div class="w-8/12 m-auto">
+        <div class="border-b-2 border-yellow-500"></div>
+        <div class="bg-yellow-700 text-white text-2xl p-2 py-4 px-5 about h-28" id="why">Entertainment Verse is your single place for your all types of Movies, Animes and Web Series in high quality.</div>
+    </div>
+
+    <div class="bg-yellow-700 text-white w-8/12 m-auto text-2xl p-2 px-5 flex justify-between mt-3">What can I watch ?<button id="plus3" onclick="openWatch()" class="text-3xl">+</button> <button onclick="closeWatch()" id="cross3" class="text-3xl cross">&times;</button></div>
+
+    <div class="w-8/12 m-auto">
+        <div class="border-b-2 border-yellow-500"></div>
+        <div class="bg-yellow-700 text-white text-2xl p-2 py-4 px-5 about h-28" id="watch">You can watch of all types such as Hollywood, Bollywood and much more in this verse. Also you can watch many famous Animes and Web Series.</div>
+    </div>
+
+    <div class="bg-yellow-700 text-white w-8/12 m-auto text-2xl p-2 px-5 flex justify-between mt-3">Where I can watch ?<button id="plus4" onclick="openWhere()" class="text-3xl">+</button> <button onclick="closeWhere()" id="cross4" class="text-3xl cross">&times;</button></div>
+
+    <div class="w-8/12 m-auto">
+        <div class="border-b-2 border-yellow-500"></div>
+        <div class="bg-yellow-700 text-white text-2xl p-2 py-4 px-5 about h-28" id="where">You can either watch online in the verse or simply download any Movies or Animes or Web Series that you want to watch.</div>
+    </div>
+
+</div>
+
+<!-- JS -->
+<script>
+    function openWhat() {
+        document.getElementById('what').style.display='block'
+        document.getElementById('plus1').style.display='none'
+        document.getElementById('cross1').style.display='block'
+        document.getElementById('why').style.display='none'
+        document.getElementById('plus2').style.display='block'
+        document.getElementById('cross2').style.display='none'
+        document.getElementById('watch').style.display='none'
+        document.getElementById('plus3').style.display='block'
+        document.getElementById('cross3').style.display='none'
+        document.getElementById('where').style.display='none'
+        document.getElementById('plus4').style.display='block'
+        document.getElementById('cross4').style.display='none'
+    }
+    function openWhy() {
+        document.getElementById('what').style.display='none'
+        document.getElementById('plus1').style.display='block'
+        document.getElementById('cross1').style.display='none'
+        document.getElementById('why').style.display='block'
+        document.getElementById('plus2').style.display='none'
+        document.getElementById('cross2').style.display='block'
+        document.getElementById('watch').style.display='none'
+        document.getElementById('plus3').style.display='block'
+        document.getElementById('cross3').style.display='none'
+        document.getElementById('where').style.display='none'
+        document.getElementById('plus4').style.display='block'
+        document.getElementById('cross4').style.display='none'
+    }
+    function openWatch() {
+        document.getElementById('what').style.display='none'
+        document.getElementById('plus1').style.display='block'
+        document.getElementById('cross1').style.display='none'
+        document.getElementById('why').style.display='none'
+        document.getElementById('plus2').style.display='block'
+        document.getElementById('cross2').style.display='none'
+        document.getElementById('watch').style.display='block'
+        document.getElementById('plus3').style.display='none'
+        document.getElementById('cross3').style.display='block'
+        document.getElementById('where').style.display='none'
+        document.getElementById('plus4').style.display='block'
+        document.getElementById('cross4').style.display='none'
+    }
+    function openWhere() {
+        document.getElementById('what').style.display='none'
+        document.getElementById('plus1').style.display='block'
+        document.getElementById('cross1').style.display='none'
+        document.getElementById('why').style.display='none'
+        document.getElementById('plus2').style.display='block'
+        document.getElementById('cross2').style.display='none'
+        document.getElementById('watch').style.display='none'
+        document.getElementById('plus3').style.display='block'
+        document.getElementById('cross3').style.display='none'
+        document.getElementById('where').style.display='block'
+        document.getElementById('plus4').style.display='none'
+        document.getElementById('cross4').style.display='block'
+    }
+    function closeWhat() {
+        document.getElementById('what').style.display='none'
+        document.getElementById('plus1').style.display='block'
+        document.getElementById('cross1').style.display='none'
+    }
+    function closeWhy() {
+        document.getElementById('why').style.display='none'
+        document.getElementById('plus2').style.display='block'
+        document.getElementById('cross2').style.display='none'
+    }
+    function closeWatch() {
+        document.getElementById('watch').style.display='none'
+        document.getElementById('plus3').style.display='block'
+        document.getElementById('cross3').style.display='none'
+    }
+    function closeWhere() {
+        document.getElementById('where').style.display='none'
+        document.getElementById('plus4').style.display='block'
+        document.getElementById('cross4').style.display='none'
+    }
+</script>
+
+{% endblock %}
