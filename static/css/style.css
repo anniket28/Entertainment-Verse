@@ -1,0 +1,109 @@
+/* EntertainmentVerse Style Sheet */
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@500&family=Josefin+Sans&family=Libre+Baskerville&family=Lora:wght@500&family=Luxurious+Roman&family=Montserrat&family=Orelega+One&family=Rubik&family=Shippori+Antique&family=Source+Sans+Pro&family=Titillium+Web&display=swap');
+
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* Background Image */
+.bgimg{
+    background-image: url('/static/images/bgimg2.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 93vh;
+}
+
+.movies{
+    background-image: url('/static/images/moviesbg.jpeg');
+    height: 50vh;
+}
+
+.animes{
+    background-image: url('/static/images/animesbg.jpeg');
+    height: 50vh;
+}
+
+.webseries{
+    background-image: url('/static/images/webseriesbg.jpeg');
+    height: 50vh
+}
+
+/* About */
+.about{
+    display: none;
+}
+.cross{
+    display: none;
+}
+
+/* Required */
+.required{
+    display: none;
+}
+
+/* Login Modal */
+.modal{
+    display: none;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    padding-top: 150px;
+    background-color: rgba(0, 0, 0, 0.800);
+}
+.modal ::placeholder{
+    color: yellow;
+}
+
+/* Signup SIdebar */
+.sidebar{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.900);
+    width: 0;
+    z-index: 1;
+    transition: 0.4s;
+}
+.sidebar ::placeholder{
+    color: yellow;
+}
+
+/* Login and Signup Button */
+nav .btn:hover{
+    transform: scale(1.1);
+}
+
+/* Loginned */
+.loginned ::placeholder{
+    color: yellow;
+}
+
+/* Login Links */
+.loginnedlinks:hover{
+    transform: scale(1.1) !important;
+}
+
+/* User */
+.user{
+    display: none;
+}
+
+/* On Hover */
+.onhover p{
+    background-color: rgba(0, 0, 0, 0.500);
+    /* display: none; */
+}
+
+/* Image */
+img{
+    height: 300px !important;
+    width: 100% !important;
+}
