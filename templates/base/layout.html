@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="loginned flex items-center mt-[10px]">
-                    <form action="/query" method="post">
+                    <form action="/query" id="searchForm" method="post">
                         <input onclick="searchBox()" onblur="searchBoxRev()" class="text-xl w-[250px] bg-transparent text-[yellow] outline-none border-b-2 border-b-slate-300" type="search" name="search" id="query" placeholder="Search">
                     </form>
                     <!-- <span type="submit" class="absolute right-20"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -113,6 +113,12 @@
         </div>
 
         <script>
+
+            document.getElementById('searchForm').addEventListener('submit',(e)=>{
+                if(document.getElementById('query').value.length==0){
+                    e.preventDefault()
+                }
+            })
 
             // Change Password Form
             document.getElementById('change').addEventListener('click',(event)=>{
